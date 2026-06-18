@@ -1,0 +1,80 @@
+# Visual Studio / .NET
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.pidb
+*.svclog
+*.pdb
+
+# Build results
+[Bb]in/
+[Oo]bj/
+TestResults/
+*.dll
+*.exe
+*.app
+
+# Publish outputs
+publish/
+*.Publish.xml
+*.publishsettings
+
+# NuGet
+packages/
+*.nupkg
+.nuget/
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# DotCover
+*.dotCover
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# User-specific files
+*.log
+*.vspscc
+*.vssscc
+*.dbmdl
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# Installer packages
+*.msi
+*.msm
+*.msp
+
+# Coverage / Test
+coverage/
+*.coverage
+*.coveragexml
+
+# JetBrains
+/.idea/
+
+# Local app settings - uncomment if you keep local config files out of source control
+# appsettings.*.json
