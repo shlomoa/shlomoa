@@ -1,0 +1,5 @@
+# GitHub Copilot provider dependencies.
+github-copilot-sdk
+
+# Optional telemetry support, when needed:
+# github-copilot-sdk[telemetry]

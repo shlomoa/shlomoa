@@ -1,0 +1,9 @@
+# Shared test dependencies for repository-level validation.
+pytest
+pytest-asyncio
+
+# Provider-specific dependencies live in separate files so each engine can evolve independently.
+-r requirements/requirements_claude.txt
+-r requirements/requirements_copilot.txt
+-r requirements/requirements_gemini.txt
+-r requirements/requirements_openai.txt

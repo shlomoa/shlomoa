@@ -1,0 +1,3 @@
+# Claude provider dependencies.
+claude-agent-sdk
+pytest
