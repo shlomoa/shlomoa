@@ -58,27 +58,23 @@ AND
 
 ---
 
-# Interactive chat rules
+## General expectations
 
-## Planning and collaboration rules
+The agent should:
+- never deviate from the approved plan and context.
+- provide responses with the sources and reasoning it is based on.
+- ask user for guidance and clarification if/when required.
+- stop if context is unclear or ambiguous.
+- avoid making assumptions or inferring missing information, and if it does it must explicitly state the assumptions and reasoning behind them.
+- accurately complete requirements given by the user, without dropping, adding or changing without explicit approval.
 
-- Always plan first.
-  - Sanitize user instructions - fix typos, clarify ambiguities, elaborate on vague and incomplete instructions.
-  - Strive for a clear, detailed, and comprehensive plan.  
-  - Provide options, discuss them with the user, and help reduce them to a single option.
-  - Develop a detailed enumerated plan with the user.
-    - Always include validation and documentation.
-- Ask user for guidance and clarification if/when required.
-  - Stop if context is unclear or ambiguous.
-  - Do not assume or infer missing information.
-- Complete requirements given by the user accurately, do not add, do not miss.
+## Key principles
 
-## Plan step implementation rules
-
+The agent should follow these principles:
 - KISS: Keep It Simple Stupid
   - Use BKMs and best practices.
   - Avoid over-engineering, over-complicating, and over-designing.
-- DRY: Don't Repeat Yourself
+- DRY: Don't Repeat
   - Avoid code duplication and redundancy:
     - abstract common functionality into reusable components or functions.
     - reference commonalities whenever needed.
@@ -86,28 +82,44 @@ AND
   - definitions are unique. Further use of definitions is done by either:
     - referencing (for documenting)
     - reusing or importing (in code).
-- Validation is part of the development process.
-  - Any change to executable code must include corresponding tests.
-  - Always validate fully working code with the user, before moving to the next task.
-  - Only report commands as passing if they ran, ended successfully and produced the expected outcome.
-- Cross-platform OS Independence
-  - All tools, scripts, paths, and implementations must support Windows, Linux, and macOS equally.
-  - Never hardcode OS-specific roots (like `C:\`) or OS-specific temporary directories without abstract cross-platform path joining tools (`path.join()`).
+
+# Interactive chat rules
+
+## Planning and collaboration rules
+
+- Plan first - the agent should:
+  - Sanitize user instructions:
+    - fix typos
+    - clarify ambiguities vague or incomplete instructions.
+    - Strive for clear, detailed and comprehensive plan.
+  - Provide options, discuss them with the user, and help reduce them to a single option.
+  - Develop a detailed enumerated plan with the user.
+    - Always include validation and documentation.
+
+## Step / Task implementation rules
+
+The agent must always:
+- Use best known practices and patterns.
+- Validate steps as part of the development process:
+  - Validate all code changes.
+  - code is always alive - continuously validated, user must confirm before moving to the next task.
+  - report commands successful completion if and only if: they ran, ended successfully and produced the expected outcome.
+- Maintain cross-platform OS Independence:
+  - tools, scripts, paths, and implementations must support at least Windows and Linux, macOS is optional.
+  - never hardcode OS-specific paths (like `C:\`) or OS-specific temporary directories without abstract cross-platform path joining tools (`path.join()`).
 - Document:
-  - rationale and context for any code change.
-  - The change, considerations during change implementation.
-  - Noticable impact on the user, system, or other components.
-- Build reusable code without any overhead:
-  - Prefer using existing reusable components.
-  - When reuse is not possible, consider abstraction and expansion of existing components.
-  - When components get too big, refactor into smaller reusable components.
+  - any change: rationale and considerations.
+    - update references across the codebase and if required in GitHub issues.
+  - noticeable impact on the user, system, or other components.
+- Build reusable code with minimal overhead:
+  - prefer existing known reusable components.
+  - consider abstraction and expansion of existing components when reuse is impossible.
   - When neither reuse nor abstraction and expansion are possible, create new reusable components.
+  - refactor code when necessary to maintain coding standards.
 - Task completion criteria
   - Run linters if exist and configured for every source code change
   - Run format checks for every change in the repo.
   - Run tests for every code change.
-- Complete requirements accurately as detailed: no more, no less.
-- Do not miss do not mess.
 
 ## Rules for executing the plan.
 
