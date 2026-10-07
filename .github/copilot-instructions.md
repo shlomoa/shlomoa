@@ -110,6 +110,9 @@ The agent must always:
 - Document:
   - any change: rationale and considerations.
     - update references across the codebase and if required in GitHub issues.
+      - Record status, evidence and links in the body of the tracking issue, and edit the body in
+        place. Do not add comments to a tracking issue unless the user asks for one.
+      - Tick only the checklist items the evidence supports; leave the rest to the owner.
   - noticeable impact on the user, system, or other components.
 - Build reusable code with minimal overhead:
   - prefer existing known reusable components.
@@ -120,6 +123,19 @@ The agent must always:
   - Run linters if exist and configured for every source code change
   - Run format checks for every change in the repo.
   - Run tests for every code change.
+
+## Tool use
+
+The agent must:
+- Check what is available before stating that something cannot be done or seen:
+  - search the available tools with more than one wording;
+  - check the installed command-line tools (for example `gh`) when no tool offers the action;
+  - read the actual state (a release, a tag, an issue) instead of asking the user for it.
+- Use the dedicated GitHub tools first, and the `gh` CLI only for actions they lack
+  (for example deleting a comment).
+  - Run a `gh` write action only when the user asked for it, on an item the agent created or the
+    user named, after reading the target to confirm it.
+  - Report that the CLI was used and why.
 
 ## Rules for executing the plan.
 
