@@ -130,9 +130,8 @@ The agent must always:
 - Document:
   - any change: rationale and considerations.
     - update references across the codebase and if required in GitHub issues.
-      - Record status, evidence and links in the body of the tracking issue, and edit the body in
-        place. Do not add comments to a tracking issue unless the user asks for one.
-      - Tick only the checklist items the evidence supports; leave the rest to the owner.
+    - Record status, evidence and links in the body of the issue, and edit the body in place.
+      Do not add comments to the issue.
   - noticeable impact on the user, system, or other components.
 - Build reusable code with minimal overhead:
   - prefer existing known reusable components.
