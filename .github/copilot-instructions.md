@@ -95,6 +95,13 @@ The agent must:
   - Run a `gh` write action only when the user asked for it, on an item the agent created or the
     user named, after reading the target to confirm it.
   - Report that the CLI was used and why.
+- Read another repository, including a private one, through the repositories attached to the session:
+  - use `gh api repos/<owner>/<repo>/contents/<path>?ref=<ref>` for an attached repository, and
+    `git clone`/`fetch` for a public one that is not attached;
+  - if access is refused, attach the repository (for example with `add_repo`) instead of copying
+    its files into the working repository;
+  - take a contract, schema or specification from its owning repository at a stated ref, never
+    from a copy.
 
 # Interactive chat rules
 
