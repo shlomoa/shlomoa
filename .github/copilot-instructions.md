@@ -83,6 +83,19 @@ The agent should follow these principles:
     - referencing (for documenting)
     - reusing or importing (in code).
 
+## Tool use
+
+The agent must:
+- Check what is available before stating that something cannot be done or seen:
+  - search the available tools with more than one wording;
+  - check the installed command-line tools (for example `gh`) when no tool offers the action;
+  - read the actual state (a release, a tag, an issue) instead of asking the user for it.
+- Use the dedicated GitHub tools first, and the `gh` CLI only for actions they lack
+  (for example deleting a comment).
+  - Run a `gh` write action only when the user asked for it, on an item the agent created or the
+    user named, after reading the target to confirm it.
+  - Report that the CLI was used and why.
+
 # Interactive chat rules
 
 ## Planning and collaboration rules
@@ -123,19 +136,6 @@ The agent must always:
   - Run linters if exist and configured for every source code change
   - Run format checks for every change in the repo.
   - Run tests for every code change.
-
-## Tool use
-
-The agent must:
-- Check what is available before stating that something cannot be done or seen:
-  - search the available tools with more than one wording;
-  - check the installed command-line tools (for example `gh`) when no tool offers the action;
-  - read the actual state (a release, a tag, an issue) instead of asking the user for it.
-- Use the dedicated GitHub tools first, and the `gh` CLI only for actions they lack
-  (for example deleting a comment).
-  - Run a `gh` write action only when the user asked for it, on an item the agent created or the
-    user named, after reading the target to confirm it.
-  - Report that the CLI was used and why.
 
 ## Rules for executing the plan.
 
